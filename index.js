@@ -48,7 +48,7 @@ express()
 .get('/user/:id', user)
 
 .delete('/:id', remove)
-.get('/:id', profile)
+.get('/profile/:id', profile)
 .use(errorFunc)
 .listen(3333)
 
@@ -64,7 +64,7 @@ function form(req, res) {
 function matchPreferences(req, res) {
   res.render('zoeken.ejs', {
       session: req.session,
-      page: 4
+      page: 2
     })
 }
 
@@ -96,7 +96,7 @@ function login(req, res) {
       req.session.loggedIn = true
       req.session.user = user
       // checkt welke gebruiker ingelogd is
-      res.redirect('/' + user._id)
+      res.redirect('/profile/' + user._id)
     } else {
       res.redirect('/')
   }
@@ -119,12 +119,18 @@ function logout(req, res) {
     })
 }
 
-function profile(req, res) {
+function profile(req, res, next) {
 
-  var mongoID = new ObjectID(req.params.id)
+var mongoID
+
+  try {
+    mongoID = new ObjectID(req.params.id)
+
+  } catch(err){
+    return next()
+  }
 
   db.collection('users').findOne({_id: mongoID}, done)
-
   function done(err, user) {
     if (err) throw err
 
@@ -209,7 +215,7 @@ function edit(req, res) {
     res.render('zoeken.ejs', {
         user: user,
         session: req.session,
-        page: 5
+        page: 3
     })
   }
 }
