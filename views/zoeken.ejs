@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<% include partials/head.ejs %>
+
+<% include partials/nav.ejs %>
+
+<% include partials/zoeken-zoekmenu.ejs %>
+
+<% if (page == 0){ %>
+  <% include partials/zoeken-zoek.ejs %>
+
+<% } else if (page == 1) { %>
+  <% include partials/zoeken-vrienden.ejs %>
+
+<% } else if (page == 2) { %>
+  <% include partials/zoeken-favorieten.ejs %>
+
+<% } else if (page == 3) { %>
+    <% include partials/zoeken-likes.ejs %>
+
+<% } else if (page == 4) { %>
+        <% include partials/zoeken-voorkeur.ejs %>
+
+<% } else if (page == 5) { %>
+        <% include partials/edit.ejs %>
+<% } %>
+</html>

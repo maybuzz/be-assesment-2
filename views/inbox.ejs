@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<% include partials/head.ejs %>
+
+<% include partials/nav.ejs %>
+
+<% include partials/inbox-menu.ejs %>
+
+<% if (page == 0){ %>
+  <% include partials/inbox-inbox.ejs %>
+
+<% } else if (page == 1) { %>
+  <% include partials/inbox-chats.ejs %>
+
+<% } %> 
+
+</html>

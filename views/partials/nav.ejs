@@ -1,0 +1,28 @@
+<header>
+  <ul class="menu">
+    <% if (typeof session !== 'undefined' && session.loggedIn) { %>
+    <li><a class="menu" href="/<%= session.user._id %>">
+      <!-- <img class="menu" alt="MAYBEE logo" src="/images/bee1.png"> -->
+      PROFIEL
+    </a></li>
+    <% } else {%>
+    <li><a class="menu" href="/">
+        <!-- <img class="menu" alt="MAYBEE logo" src="/images/bee1.png"> -->
+      HOME
+    </a></li>
+    <% } %>
+
+    <% if (typeof session !== 'undefined' && session.loggedIn) { %>
+    <li><a class="menu" href="/zoeken">
+      <!-- <img class="menu" alt="ZOEKEN" src="/images/search.png"> -->
+      ZOEKEN
+    </a></li>
+    <!-- <li><a class="menu" href="/inbox">
+      <img class="menu" alt="chat" src="/images/bericht.png">
+      CHATS
+    </a></li> -->
+    <!-- <li><a class="menu"><img class="menu" alt="dots" src="/images/dots.png"></a></li> -->
+    <% } %>
+  </ul>
+
+</header>

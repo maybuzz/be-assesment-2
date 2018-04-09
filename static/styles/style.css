@@ -1,0 +1,183 @@
+body {
+  background-color: #9E9E9E;
+  font-size: 1em;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+main {
+  margin: 0 8px;
+}
+
+h1 {
+  font-size: 1.5em;
+  background-color: white;
+  margin: 0;
+  padding: 0.5em;
+}
+
+header > h1 {
+  padding-left: 0.5em;
+  margin: 0 0 1em;
+  padding: 0.5em;
+}
+
+h2 {
+  font-size: 1em;
+  padding-left: 0.5em;
+}
+
+p {
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 0;
+}
+
+section {
+  background-color: #fff;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+}
+
+article {
+  background-color: #fff;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+}
+
+div {
+  background-color: #fff;
+}
+
+.chat {
+  margin-bottom: 1em;
+}
+
+ul.menu {
+  display: flex;
+  background-color: #fff;
+  list-style-type: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  height: 8%;
+  width: 100%;
+}
+
+li {
+  margin: 0.5EM;
+}
+
+li a.menu:hover {
+    background-color: lightpink;
+}
+
+div.menu {
+  display: flex;
+  width: 100%;
+  background-color: black;
+  align-items: stretch;
+}
+
+a.menu {
+  display: inline;
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  padding: 0;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 1em;
+}
+
+img.menu {
+  height: auto;
+  width: 25%;
+  padding-top: 20;
+}
+
+/* .icon {
+  max-height: 30%;
+} */
+
+.card {
+  display: grid;
+  grid-column: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+a > img {
+  max-height: 100%;
+}
+
+.omslag {
+  height: 20%;
+}
+
+.banner {
+  max-width: 100%;
+}
+
+img.omslag:first-of-type {
+  position: absolute;
+}
+
+form {
+  padding: 1em 2em;
+}
+
+label {
+  display: block;
+  padding-bottom: 1em;
+}
+
+input {
+  display: block;
+  padding: 0.25em;
+  font-size: 0.8em;
+  width: 15em;
+  grid-column: 1;
+  margin-top: 0.5em;
+}
+
+#checkbox {
+  display: inline;
+}
