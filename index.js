@@ -6,7 +6,9 @@ var mongo = require('mongodb')
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var multer = require('multer')
-var upload = multer({dest: 'static/uploads'})
+var upload = multer({
+  dest: 'static/uploads'
+})
 
 require('dotenv').config()
 
@@ -29,11 +31,11 @@ express()
   .use(bodyParser.urlencoded({
     extended: true
   }))
-  // Wouter Lem heeft me geholpen de session op te zetten
+  // Wouter Lem helped me to use and create sessions
   .use(session({
-    secret: "asdf", // secret versleuteld de cookies
-    resave: false, // resave slaat gegevens op. true = data overschrijven, false = op data doorwerken
-    saveUninitialized: false // saveUninitialized zorgt ervoor dat onnodige sessions niet plaatsvinden, false = session wanneer gebruiker inlogt, true = overbodige sessions
+    secret: "asdf",
+    resave: false,
+    saveUninitialized: false
   }))
   .set('view engine', 'ejs')
   .set('views', 'views')
@@ -56,7 +58,9 @@ express()
   .get('/profile/:id', profile)
   .listen(3333)
 
-
+/* to set up my mongodb database I used the mongodb server example created by Titus Worm: https://github.com/cmda-be/course-17-18/tree/master/examples/mongodb-server */
+/* I also used a lot of Titus his slides from week 4 and 5: https://docs.google.com/presentation/d/1QVPTtENQ8d6td9ioNZHnbSoiilUZdsZ8n_F5naxw_Rw/edit#slide=id.g2922825c54_2_58
+https://docs.google.com/presentation/d/1PfEaV-jQdqKWByca9txp38yD8LWIDEWZzldNYBMwUNI/edit */
 function index(req, res) {
   res.render('login.ejs')
 }
@@ -66,14 +70,14 @@ function form(req, res) {
 }
 
 function matchPreferences(req, res) {
-  res.render('zoeken.ejs', {
+  res.render('find.ejs', {
     session: req.session,
     page: 2
   })
 }
 
-// functie om gebruiker aan te maken en gegevens naar database te sturen
-// Wouter Lem heeft me geholpen om de session te starten wanneer je je account aanmaakt
+// function to add users, send data to database and start session at login
+// Wouter Lem helped me to create and work with sessions
 function add(req, res) {
   var body = req.body
 
@@ -107,8 +111,8 @@ function add(req, res) {
   }
 }
 
-// functie om in te loggen
-// Wouter Lem heeft me geholpen om de session te starten wanneer je inlogt
+// function to login
+// Wouter Lem helped me to start a session when a user is logged in
 function login(req, res) {
   var body = Object.assign({}, req.body)
 
@@ -117,13 +121,13 @@ function login(req, res) {
   }, done)
 
   function done(err, user) {
-    if(err) {
+    if (err) {
       res.status(404).render('error.ejs', {
         id: 404,
         title: 'Not found',
         detail: 'Oops, er gaat wat mis...'
       })
-    } else if (user && user.password === body.password){
+    } else if (user && user.password === body.password) {
       req.session.loggedIn = true
       req.session.user = user
       res.redirect('/profile/' + user._id)
@@ -131,8 +135,8 @@ function login(req, res) {
   }
 }
 
-// functie om uit te logged
-// Wouter Lem heeft me geholpen met session maken en destroyen
+// function to log out
+// Wouter Lem helped me to destoy the session I started
 function logout(req, res) {
   var data = {
     session: req.session.user,
@@ -155,8 +159,8 @@ function logout(req, res) {
   }
 }
 
-// functie om profiel met goede id te laden
-// Titus Worm heeft me geholpen mijn ObjectID error-loos door te geven
+// function to match profile with the id given by Mongodb
+// Titus Worm en Folkert-Jan van der Pol hebben me geholpen mijn ObjectID error-loos door te geven
 function profile(req, res, next) {
   var mongoID
 
@@ -171,19 +175,13 @@ function profile(req, res, next) {
     _id: mongoID
   }, done)
 
-  function done(err, user) {
-    if (err) {
-
-    }
-
-    res.render('profile.ejs', {
-      user: user,
-      session: req.session
-    })
-  }
+  res.render('profile.ejs', {
+    user: user,
+    session: req.session
+  })
 }
 
-// functie om gebruiker te verwijderen uit de database
+// function to delete your account
 function remove(req, res) {
   var id = req.params.id
 
@@ -204,7 +202,7 @@ function remove(req, res) {
   }
 }
 
-// functie om gebruiker uit de database te laden
+// function to load user-profile from database
 function user(req, res) {
   var id = req.params.id
   db.collection('users').findOne({
@@ -227,7 +225,7 @@ function user(req, res) {
   }
 }
 
-// functie om resultaten (gebruikers) te laden
+// function to load results (users) from database
 function match(req, res) {
   db.collection('users').find().toArray(done)
 
@@ -239,7 +237,7 @@ function match(req, res) {
         detail: 'Oops, er gaat wat mis...'
       })
     } else {
-      res.render('zoeken.ejs', {
+      res.render('find.ejs', {
         users: data,
         session: req.session,
         page: 0
@@ -248,7 +246,7 @@ function match(req, res) {
   }
 }
 
-// functie om voorkeuren door te geven en te filteren
+// function to set preferences to find matches using a filter
 function updatePreferences(req, res) {
   db.collection('users').find({
     gender: req.body.gender
@@ -262,7 +260,7 @@ function updatePreferences(req, res) {
         detail: 'Oops, er gaat wat mis...'
       })
     } else {
-      res.render('zoeken.ejs', {
+      res.render('find.ejs', {
         users: data,
         session: req.session,
         page: 0
@@ -271,7 +269,7 @@ function updatePreferences(req, res) {
   }
 }
 
-// functie om aanpasformulier te laden en ingestelde gegevens in te laden
+// function to load edit-form and load in set values
 function edit(req, res) {
   var id = req.session.user._id
   db.collection('users').findOne({
@@ -286,7 +284,7 @@ function edit(req, res) {
         detail: 'Oops, er gaat wat mis...'
       })
     }
-    res.render('zoeken.ejs', {
+    res.render('find.ejs', {
       user: user,
       session: req.session,
       page: 3
@@ -294,7 +292,7 @@ function edit(req, res) {
   }
 }
 
-// functie om profiel aan te passen en gegevens doorgeven aan database
+// function to edit profile and send data (changes) to database
 function edition(req, res) {
   var id = req.session.user._id
 
