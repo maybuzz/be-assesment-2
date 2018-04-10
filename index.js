@@ -321,3 +321,5 @@ function edition(req, res) {
     }
   }
 }
+
+// Ik heb over het hele project veel samengewerkt met Nina van Bergen, Jessie Mason en Linda de Haan met hulp van Wouter Lem en Folkert van der Pol
