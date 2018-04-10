@@ -1,0 +1,15 @@
+<header>
+  <ul class="menu">
+    <% if (typeof session !== 'undefined' && session.loggedIn) { %>
+    <li><a class="menu" href="/profile/<%= session.user._id %>">PROFIEL</a></li>
+
+    <% } else {%>
+    <li><a class="menu" href="/">HOME</a></li>
+    <% } %>
+
+    <% if (typeof session !== 'undefined' && session.loggedIn) { %>
+    <li><a class="menu" href="/zoeken">ZOEKEN</a></li>
+
+    <% } %>
+  </ul>
+</header>

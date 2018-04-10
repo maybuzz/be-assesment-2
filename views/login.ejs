@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<% include partials/head.ejs %>
+
+<% include partials/nav.ejs %>
+
+<body>
+  <header>
+    <h1>INLOGGEN </h1>
+  </header>
+  <main>
+    <section>
+      <form class="login" action="/" method="POST">
+        <label><input type="email" name="username" placeholder="E-mailadres"></label>
+        <label><input type="password" name="password" placeholder="Wachtwoord"></label>
+        <button type="submit">Inloggen</button>
+        <a class="button" href="/register">Registreren</a>
+      </form>
+    </section>
+
+  </main>
+</body>
+
+
+</html>

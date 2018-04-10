@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<% include partials/head.ejs %>
+
+<% include partials/nav.ejs %>
+
+<% include partials/find-menu.ejs %>
+
+<% if (page == 0){ %>
+  <% include partials/find-find.ejs %>
+
+<% } else if (page == 2) { %>
+        <% include partials/find-pref.ejs %>
+
+<% } else if (page == 3) { %>
+        <% include partials/edit.ejs %>
+<% } %>
+</html>

@@ -1,0 +1,69 @@
+<body>
+
+<header>
+  <h1>AANPASSEN</h1>
+</header>
+
+<main>
+<section>
+  <form action="/aanpassen" method="POST">
+    <label>Voornaam
+      <input type="text" name="firstname" placeholder="Voornaam" value="<%= user.firstname %>">
+    </label>
+    <label>Achternaam
+      <input type="text" name="lastname" placeholder="Achternaam" value="<%= user.lastname %>">
+    </label>
+    <label>Woonplaats
+      <input type="text" placeholder="Woonplaats" name="place" value="<%= user.place %>">
+    </label>
+    <label>Biografie
+      <input type="text" name="bio" placeholder="Schrijf iets over jezelf" value="<%= user.bio %>">
+    </label>
+
+    <button type="submit" >Opslaan</button>
+  </form>
+</section>
+
+<!-- <section>
+  <h2>PROFIEL</h2>
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label>Upload profielfoto<input type="file" name="profilepic"  accept="image/*"></label>
+  <label>Upload omslagfoto<input type="file" name="banner" accept="image/*"></label>
+</form>
+</section> -->
+
+  <!-- <section>
+    <h2>INTERESSES</h2>
+    <p>Geef aan waar je interesses liggen.</p>
+  <form>
+    <label>Muziek
+      <input type="checkbox" value="rock" required>Rock
+      <input type="checkbox" value="punk" required>Punk
+      <input type="checkbox" value="hip" required>Hip-hop
+      <input type="checkbox" value="rnb" required>RnB
+      <input type="checkbox" value="jazz" required>Jazz
+      <input type="checkbox" value="klassiek" required>Klassiek
+    </label>
+    <label>Sport
+      <input type="checkbox" value="tennis" required>Tennis
+      <input type="checkbox" value="voetbal" required>Voetbal
+      <input type="checkbox" value="basketbal" required>Basketbal
+      <input type="checkbox" value="korfbal" required>Korfbal
+      <input type="checkbox" value="fitness" required>Fitness
+      <input type="checkbox" value="zwemmen" required>Zwemmen
+    </label>
+    <label>Activiteiten
+      <input type="checkbox" value="crea" required>Creatief
+      <input type="checkbox" value="knutselen" required>Muziek
+      <input type="checkbox" value="gamen" required>Gamen
+      <input type="checkbox" value="computers" required>Computers
+      <input type="checkbox" value="lezen" required>Lezen
+      <input type="checkbox" value="schrijven" required>Schrijven
+    </label>
+    <a class="button" href="#">Terug</a>
+    <a class="button" href="/">Opslaan</a>
+   </form>
+</section> -->
+</main>
+
+</body>
